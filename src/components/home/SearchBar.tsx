@@ -37,7 +37,7 @@ const SearchBar = () => {
       <div className="border border-black p-2">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <div className="flex w-[130px] items-center justify-between">
+            <div className="flex w-full md:w-[130px] items-center justify-between">
               <Image className="size-5" />
               <p className="text-sm">{selectedLabel}</p>
               <ChevronDown />

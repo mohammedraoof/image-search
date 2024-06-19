@@ -5,23 +5,23 @@ import HeartIcon from "../icons/HeartIcon";
 const Navbar = () => {
   return (
     <nav>
-      <div className="flex items-center justify-between mx-auto px-4 py-2 md:px-0 lg:px-8 bg-black text-white">
-        <h1 className="md:text-4xl text-2xl font-bold ">My Image Search</h1>
-        <div className="flex gap-5 items-center justify-center">
+      <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between mx-auto px-4 py-2 md:px-0 lg:px-8 bg-black text-white">
+        <h1 className="md:text-4xl text-xl font-bold ">My Image Search</h1>
+        <div className="flex gap-2 md:gap-5 items-center md:justify-center justify-between">
           <Link href="/">
             <div className="flex gap-1 items-center justify-center">
               <HeartIcon />
-              Light Boxes
+              <span className="text-sm md:text-base">Light Boxes</span>
             </div>
           </Link>
           <Link href="/">
             <div className="flex gap-1 items-center justify-center">
               <CartIcon />
-              Cart
+              <span className="text-sm md:text-base">Cart</span>
             </div>
           </Link>
-          <Link href="/">
-            <button className="border border-white rounded-md px-4 py-1 text-white font-semibold">
+          <Link passHref href="/">
+            <button className="border border-white rounded-md p-1 md:px-4 py-1 text-white font-semibold text-sm ">
               Sign In
             </button>
           </Link>

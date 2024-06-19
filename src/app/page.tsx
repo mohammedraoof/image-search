@@ -37,7 +37,7 @@ export default async function Home(props: HomeProps) {
         }
       >
         <section>
-          <div className="p-5 flex items-center justify-between">
+          <div className="p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             <h3 className="font-semibold text-sm">
               {query && <span className="capitalize">{query}</span>} Stock
               Photos And Images{" "}
@@ -65,8 +65,8 @@ export default async function Home(props: HomeProps) {
             </div>
           )}
           <hr />
-          <div className="p-5 flex justify-between">
-            <p>
+          <div className="p-5 flex flex-col md:flex-row gap-3 justify-between">
+            <p className="text-sm md:text-base">
               {query && (
                 <span className="capitalize">Search Result For{query}</span>
               )}{" "}
