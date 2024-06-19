@@ -1,8 +1,11 @@
 import CategorySelector from "@/components/home/CategorySelector";
-import HeaderPagination from "@/components/home/HeaderPagination";
+import ImageList from "@/components/home/ImageList";
+import Pagination from "@/components/home/Pagination";
 import SearchBar from "@/components/home/SearchBar";
+import { Button } from "@/components/ui/button";
 import { ImageService } from "@/services/Image.Service";
 import { ImageSearchInput } from "@/types/ImageSearch";
+import Link from "next/link";
 import { Suspense } from "react";
 
 interface HomeProps {
@@ -14,19 +17,21 @@ export default async function Home(props: HomeProps) {
 
   const images = await ImageService.imageSearch({
     query,
-    limit: 12,
+    limit: 24,
     page: Number(page),
   });
 
+  const lastPage = Math.ceil(images.total_results / images.per_page);
+
   return (
-    <main className="">
+    <main>
       <SearchBar />
       <CategorySelector />
       <Suspense
         fallback={
           <div className="flex flex-col items-center justify-center h-screen">
             <div className="text-center">
-              <p className="text-2xl">Loading...</p>
+              <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
             </div>
           </div>
         }
@@ -42,12 +47,33 @@ export default async function Home(props: HomeProps) {
                 </span>
               )}
             </h3>
-            <HeaderPagination
-              page={page}
-              totalPages={Math.ceil(images.total_results / images.per_page)}
-            />
+            <Pagination page={page} totalPages={lastPage} />
           </div>
+          {/* Image Listing */}
+          <ImageList images={images.photos} />
+
+          {lastPage !== +page && (
+            <div className="text-center p-5">
+              <Link href={`/?query=${query}&page=${+page + 1}`}>
+                <Button
+                  size="lg"
+                  className="bg-white text-black border border-black hover:bg-black hover:text-white w-[300px]"
+                >
+                  Next page
+                </Button>
+              </Link>
+            </div>
+          )}
           <hr />
+          <div className="p-5 flex justify-between">
+            <p>
+              {query && (
+                <span className="capitalize">Search Result For{query}</span>
+              )}{" "}
+              Stock Photos and images({images.total_results})
+            </p>
+            <Pagination page={page} totalPages={lastPage} />
+          </div>
         </section>
       </Suspense>
     </main>

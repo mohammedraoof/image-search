@@ -3,12 +3,12 @@ import useGetImageSearchParams from "@/hooks/useGetImageSearchParams";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-interface HeaderPaginationProps {
+interface PaginationProps {
   page: number;
   totalPages: number;
 }
 
-const HeaderPagination = (props: HeaderPaginationProps) => {
+const Pagination = (props: PaginationProps) => {
   const { page, totalPages } = props;
   const { query } = useGetImageSearchParams();
   const router = useRouter();
@@ -70,4 +70,4 @@ const HeaderPagination = (props: HeaderPaginationProps) => {
   );
 };
 
-export default HeaderPagination;
+export default Pagination;
