@@ -1,6 +1,5 @@
+import { Heart, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import CartIcon from "../icons/CartIcon";
-import HeartIcon from "../icons/HeartIcon";
 
 const Navbar = () => {
   return (
@@ -10,18 +9,18 @@ const Navbar = () => {
         <div className="flex gap-2 md:gap-5 items-center md:justify-center justify-between">
           <Link href="/">
             <div className="flex gap-1 items-center justify-center">
-              <HeartIcon />
+              <Heart />
               <span className="text-sm md:text-base">Light Boxes</span>
             </div>
           </Link>
           <Link href="/">
             <div className="flex gap-1 items-center justify-center">
-              <CartIcon />
+              <ShoppingCart />
               <span className="text-sm md:text-base">Cart</span>
             </div>
           </Link>
           <Link passHref href="/">
-            <button className="border border-white rounded-md p-1 md:px-4 py-1 text-white font-semibold text-sm ">
+            <button className="border border-white rounded-md p-1 px-4 py-1 text-white font-semibold text-sm ">
               Sign In
             </button>
           </Link>

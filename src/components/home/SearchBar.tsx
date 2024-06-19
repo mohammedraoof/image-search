@@ -8,9 +8,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { categories } from "@/constants/Categories";
 import useGetImageSearchParams from "@/hooks/useGetImageSearchParams";
-import { CameraIcon, ChevronDown, Image, Search } from "lucide-react";
+import { ChevronDown, Image, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
+import SearchByImageButton from "./SearchByImageButton";
 
 const SearchBar = () => {
   const [selected, setSelected] = useState("all");
@@ -33,11 +34,11 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="flex">
-      <div className="border border-black p-2">
+    <div className="flex flex-col md:flex-row mb-3 md:mb-0 border-b sm:border-b-0 border-black">
+      <div className="border border-black p-2 flex justify-between sm:block">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <div className="flex w-full md:w-[130px] items-center justify-between">
+            <div className="flex w-full md:w-[130px] items-center  justify-between gap-2">
               <Image className="size-5" />
               <p className="text-sm">{selectedLabel}</p>
               <ChevronDown />
@@ -56,10 +57,11 @@ const SearchBar = () => {
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+        <SearchByImageButton className="flex sm:hidden" />
       </div>
       <form
         action={handleSearch}
-        className="flex-grow border-black p-2 border-y  flex gap-2 items-center justify-center"
+        className="flex-grow border-black p-2 border-y-0 md:border-y border-x md:border-x-0 flex gap-2 items-center justify-center"
       >
         <Search />
         <input
@@ -70,10 +72,7 @@ const SearchBar = () => {
           defaultValue={query}
         />
       </form>
-      <button className="border border-black p-2 text-sm flex items-center justify-center gap-2">
-        <CameraIcon />
-        <p>Search By Image</p>
-      </button>
+      <SearchByImageButton className="hidden sm:flex" />
     </div>
   );
 };

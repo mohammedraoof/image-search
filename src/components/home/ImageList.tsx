@@ -28,8 +28,9 @@ const ImageList = (props: Props) => {
           >
             <img
               src={image.src.original}
-              alt={image.photographer}
+              alt={image.alt}
               className="h-full w-full object-cover hover:cursor-pointer"
+              loading="lazy"
             />
             <div className="hidden group-hover:block cursor-pointer absolute top-0 left-0 right-0 bottom-0 p-3">
               <div className="flex flex-col justify-between h-full">

@@ -8,7 +8,7 @@ const CategorySelector = () => {
   const [selected, setSelected] = useState("all");
 
   return (
-    <div className="flex p-5 bg-slate-100">
+    <div className="flex p-5 bg-slate-100 items-center justify-center md:justify-start">
       {categories.map((category) => (
         <Button
           onClick={() => {
